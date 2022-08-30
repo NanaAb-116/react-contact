@@ -1,21 +1,21 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
-import React, { useState } from 'react';
-import AddContactsForm from './components/AddContactsForm';
-import Contacts from './components/Contacts';
+import "bootstrap/dist/css/bootstrap.min.css";
+import React, { useState } from "react";
+import AddContactsForm from "./components/AddContactsForm";
+import Contacts from "./components/Contacts";
 
 function App() {
   const [users, setUsers] = useState([
     {
-      name: 'Terry',
-      phone: '0209856784',
-      location: 'Accra',
-      id: '1659431731207',
+      name: "Terry",
+      phone: "0209856784",
+      location: "Accra",
+      id: "1659431731207",
     },
     {
-      name: 'Ash',
-      phone: '0504753457',
-      location: 'Kumasi',
-      id: '1659431734534',
+      name: "Ash",
+      phone: "0504753457",
+      location: "Kumasi",
+      id: "1659431734534",
     },
   ]);
 
@@ -24,8 +24,8 @@ function App() {
       ...users,
       {
         name: user.name,
-        email: user.email,
-        gen: user.gen,
+        phone: user.phone,
+        location: user.location,
         id: new Date().getTime().toString(),
       },
     ]);
@@ -42,12 +42,12 @@ function App() {
   };
   return (
     <>
-      <div className='container'>
-        <div className='row mt-5'>
-          <div className='col-md-6'>
+      <div className="container">
+        <div className="row mt-5">
+          <div className="col-md-6">
             <AddContactsForm addContact={handleSubmit} />
           </div>
-          <div className='col-md-6'>
+          <div className="col-md-6">
             <Contacts
               contactData={users}
               deleteUser={handleDeleteContact}
