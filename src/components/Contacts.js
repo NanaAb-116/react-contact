@@ -1,10 +1,10 @@
-import User from './User';
+import User from "./User";
 
-function AllUsers({ contactData, deleteUser, handleEdit }) {
+function AllContacts({ contactData, deleteUser, handleEdit }) {
   return (
     <>
-      <div class='container'>
-        <div className='row'>
+      <div className="container">
+        <div className="row">
           {contactData.map((item, index) => {
             return (
               <User
@@ -21,4 +21,4 @@ function AllUsers({ contactData, deleteUser, handleEdit }) {
   );
 }
 
-export default AllUsers;
+export default AllContacts;
