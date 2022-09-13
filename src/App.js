@@ -5,18 +5,18 @@ import Contacts from "./components/Contacts";
 
 function App() {
   const [users, setUsers] = useState([
-    {
-      name: "Terry",
-      phone: "0209856784",
-      location: "Accra",
-      id: "1659431731207",
-    },
-    {
-      name: "Ash",
-      phone: "0504753457",
-      location: "Kumasi",
-      id: "1659431734534",
-    },
+    // {
+    //   name: "Terry",
+    //   phone: "0209856784",
+    //   location: "Accra",
+    //   id: "1659431731207",
+    // },
+    // {
+    //   name: "Ash",
+    //   phone: "0504753457",
+    //   location: "Kumasi",
+    //   id: "1659431734534",
+    // },
   ]);
 
   const handleSubmit = (user) => {

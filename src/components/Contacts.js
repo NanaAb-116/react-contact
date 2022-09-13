@@ -1,11 +1,14 @@
+import { useSelector } from "react-redux";
 import User from "./User";
 
-function AllContacts({ contactData, deleteUser, handleEdit }) {
+function AllContacts({ deleteUser, handleEdit }) {
+  const { contacts } = useSelector((store) => store);
+
   return (
     <>
       <div className="container">
         <div className="row">
-          {contactData.map((item, index) => {
+          {contacts.map((item, index) => {
             return (
               <User
                 key={index}

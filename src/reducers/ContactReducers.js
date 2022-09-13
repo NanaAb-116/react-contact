@@ -16,7 +16,13 @@ let initialStore = {
 };
 
 let ContactReducer = (state = initialStore, action) => {
-  return state;
+  switch (action.type) {
+    case "ADD_NEW_CONTACT":
+      return { ...state, contacts: [...state.contacts, action.payload] };
+
+    default:
+      return state;
+  }
 };
 
 export default ContactReducer;
