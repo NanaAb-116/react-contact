@@ -1,13 +1,17 @@
 import React, { useState } from "react";
 import { Modal } from "react-bootstrap";
 import EditContactsForm from "./EditContactsForm";
+import { useDispatch } from "react-redux";
+import { DeleteContact } from "../actions/contactActions";
 
 function User({ contactData, deleteUser, handleEdit }) {
+  const dispatch = useDispatch();
+
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const handleDelete = () => {
-    deleteUser(contactData.id);
+    dispatch(DeleteContact(contactData.id));
   };
   return (
     <>
