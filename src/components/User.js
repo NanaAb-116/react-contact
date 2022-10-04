@@ -4,7 +4,7 @@ import EditContactsForm from "./EditContactsForm";
 import { useDispatch } from "react-redux";
 import { DeleteContact } from "../actions/contactActions";
 
-function User({ contactData, deleteUser, handleEdit }) {
+function User({ contactData, handleEdit }) {
   const dispatch = useDispatch();
 
   const [show, setShow] = useState(false);

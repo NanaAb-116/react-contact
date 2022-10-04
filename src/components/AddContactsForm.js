@@ -3,15 +3,22 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { AddNewContact } from "../actions/contactActions";
 import { useDispatch } from "react-redux";
+import { v4 as uuidv4 } from "uuid";
+import { setDoc, doc } from "firebase/firestore";
+import { db } from "../firebase/firebaseConfig";
 
 function AddUserForm() {
   const dispatch = useDispatch();
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [location, setLocation] = useState("");
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    dispatch(AddNewContact({ name, phone, location }));
+    let newContact = { name, phone, location, id: uuidv4() };
+    // dispatch(AddNewContact({ name, phone, location }));
+    await setDoc(doc(db, "contacts", newContact.id), {
+      newContact,
+    });
     setName("");
     setPhone("");
     setLocation("");
