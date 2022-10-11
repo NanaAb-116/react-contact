@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { Modal } from "react-bootstrap";
 import EditContactsForm from "./EditContactsForm";
 import { useDispatch } from "react-redux";
-import { DeleteContact } from "../actions/contactActions";
+import { doc, deleteDoc } from "firebase/firestore";
+import { db } from "../firebase/firebaseConfig";
 
 function User({ contactData, handleEdit }) {
   const dispatch = useDispatch();
@@ -10,8 +11,8 @@ function User({ contactData, handleEdit }) {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  const handleDelete = () => {
-    dispatch(DeleteContact(contactData.id));
+  const handleDelete = async () => {
+    await deleteDoc(doc(db, "contacts", contactData.id));
   };
   return (
     <>
