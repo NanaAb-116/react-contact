@@ -1,38 +1,75 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+.form-container {
+  background-color: #fffffe;
   min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.form {
+  width: 20rem;
+  margin: 1rem auto;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
-
-.App-link {
-  color: #61dafb;
+h1 {
+  color: #00214d;
+  font-size: 2rem;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+label {
+  color: #1b2d45;
+  font-size: larger;
+}
+input {
+  border: none;
+  border-bottom: 1px solid #00ebc7;
+  padding: 8px;
+  outline: 0;
+  width: 90%;
+  height: 2.5rem;
+}
+.form .btns {
+  margin: 1rem 0;
+  display: flex;
+}
+.form button {
+  font-size: small;
+  margin: 12px;
+  height: 3rem;
+  width: 10rem;
+  border: 0;
+  background-color: #00ebc7;
+  color: #00214d;
+  border-radius: 4px;
+}
+.form button:active {
+  box-shadow: inset 1px 1px 7px black;
+}
+img {
+  height: 1rem;
+  margin-right: 8px;
+}
+.sign-out {
+  display: flex;
+  justify-content: flex-end;
+}
+.signOut {
+  border-radius: 4px;
+  width: 10rem;
+  align-items: flex-end;
+}
+svg {
+  height: 2rem;
+  margin-right: 8px;
+}
+.alert {
+  margin: 0;
+  padding: 0rem;
+  height: 1.5rem;
+}
+.alert p {
+  margin: 0;
+  color: rgb(255, 28, 28);
+  font-size: small;
+  font-weight: bold;
 }

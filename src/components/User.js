@@ -1,13 +1,10 @@
 import React, { useState } from "react";
 import { Modal } from "react-bootstrap";
 import EditContactsForm from "./EditContactsForm";
-import { useDispatch } from "react-redux";
 import { doc, deleteDoc } from "firebase/firestore";
 import { db } from "../firebase/firebaseConfig";
 
 function User({ contactData, handleEdit }) {
-  const dispatch = useDispatch();
-
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -37,7 +34,7 @@ function User({ contactData, handleEdit }) {
           <p className="card-text">Location: {contactData.location}</p>
           <a
             className="btn btn-primary mr-3"
-            href="#"
+            href="/"
             onClick={handleShow}
             role="button"
           >
@@ -45,7 +42,7 @@ function User({ contactData, handleEdit }) {
           </a>
           <a
             className="btn btn-danger"
-            href="#"
+            href="/"
             onClick={handleDelete}
             role="button"
           >

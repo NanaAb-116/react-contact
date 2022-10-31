@@ -2,13 +2,9 @@ import { doc, updateDoc } from "firebase/firestore";
 import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import { useDispatch } from "react-redux";
-import { EditContact } from "../actions/contactActions";
 import { db } from "../firebase/firebaseConfig";
 
 function EditUserForm({ contactData, hide }) {
-  const dispatch = useDispatch();
-
   const [name, setName] = useState(contactData.name);
   const [phone, setPhone] = useState(contactData.phone);
   const [location, setLocation] = useState(contactData.location);
@@ -21,7 +17,6 @@ function EditUserForm({ contactData, hide }) {
     } catch (error) {
       console.log(error);
     }
-    // dispatch(EditContact({ id: contactData.id, name, phone, location }));
     setName("");
     setPhone("");
     setLocation("");

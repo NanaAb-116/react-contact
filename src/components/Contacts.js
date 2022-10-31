@@ -8,7 +8,7 @@ function AllContacts({ deleteUser, handleEdit }) {
     <>
       <div className="container">
         <div className="row">
-          {contacts.map((item, index) => {
+          {contacts?.map((item, index) => {
             return (
               <User
                 key={index}

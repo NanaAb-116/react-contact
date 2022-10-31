@@ -1,14 +1,11 @@
 import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import { AddNewContact } from "../actions/contactActions";
-import { useDispatch } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
 import { setDoc, doc, serverTimestamp } from "firebase/firestore";
 import { db } from "../firebase/firebaseConfig";
 
 function AddUserForm() {
-  const dispatch = useDispatch();
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [location, setLocation] = useState("");

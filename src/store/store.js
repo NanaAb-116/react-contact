@@ -1,7 +1,20 @@
-import { createStore, applyMiddleware } from "redux";
-import ContactReducer from "../reducers/ContactReducers";
-import thunk from "redux-thunk";
+import { createStore, combineReducers } from "redux";
+import ContactReducers from "../reducers/ContactReducers";
+import AuthReducer from "../reducers/AuthReducer";
+import { persistStore, persistReducer } from "redux-persist";
+import storage from "redux-persist/lib/storage";
 
-let store = createStore(ContactReducer, applyMiddleware(thunk));
+const persistConfig = {
+  key: "root",
+  storage,
+};
 
-export default store;
+let reducers = combineReducers({ ContactReducers, AuthReducer });
+
+const persistedReducer = persistReducer(persistConfig, reducers);
+
+let store = createStore(persistedReducer);
+
+let persistor = persistStore(store);
+
+export { store, persistor };

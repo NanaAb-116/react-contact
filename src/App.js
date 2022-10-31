@@ -1,17 +1,13 @@
 import "bootstrap/dist/css/bootstrap.min.css";
+import "./App.css";
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { AddNewContact } from "./actions/contactActions";
-import { db } from "./firebase/firebaseConfig";
-import AddContactsForm from "./components/AddContactsForm";
-import Contacts from "./components/Contacts";
-import {
-  collection,
-  onSnapshot,
-  orderBy,
-  query,
-  querySnapshot,
-} from "firebase/firestore";
+import { auth, db } from "./firebase/firebaseConfig";
+import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
+import Routers from "./Routers";
+import { dispatchUser } from "./actions/authAction";
+import { onAuthStateChanged } from "firebase/auth";
 
 function App() {
   const dispatch = useDispatch();
@@ -19,7 +15,7 @@ function App() {
   useEffect(() => {
     const readData = async () => {
       const q = query(collection(db, "contacts"), orderBy("timestamp", "asc"));
-      const unsubscribe = onSnapshot(q, (querySnapshot) => {
+      onSnapshot(q, (querySnapshot) => {
         const contactArr = [];
         querySnapshot.forEach((doc) => {
           contactArr.push(doc.data());
@@ -30,20 +26,22 @@ function App() {
     };
 
     readData();
-  }, []);
+  }, [dispatch]);
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (users) => {
+      if (users) {
+        dispatch(dispatchUser(users));
+        console.log(users);
+      } else {
+        dispatch(dispatchUser(null));
+      }
+    });
+  }, [dispatch]);
 
   return (
     <>
-      <div className="container">
-        <div className="row mt-5">
-          <div className="col-md-6">
-            <AddContactsForm />
-          </div>
-          <div className="col-md-6">
-            <Contacts />
-          </div>
-        </div>
-      </div>
+      <Routers />
     </>
   );
 }
